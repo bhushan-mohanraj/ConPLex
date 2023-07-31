@@ -1,6 +1,7 @@
 import os
 import sys
 import shutil
+import tarfile
 import urllib.request
 from functools import wraps, partial
 from argparse import ArgumentParser
@@ -102,6 +103,12 @@ def main(args):
             remote_base = get_remote_path(bm)
             remote_path = f"{remote_base}/{fi}"
             download_safe(remote_path, local_path, key = f"{bm}/{fi}")
+
+        if bm == "lit-pcba":
+            logg.info(f"Extracting LIT-PCBA data from {local_path}...")
+            [fi] = fi_list
+            with tarfile.open(task_dir / fi, "r:gz") as tar:
+                tar.extractall(path=task_dir)
 
     logg.info("[MODELS]")
     models = args.models or []
