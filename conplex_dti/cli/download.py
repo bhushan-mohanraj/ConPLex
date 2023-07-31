@@ -22,6 +22,7 @@ def get_remote_path(bm: str):
         "biosnap_prot": "https://raw.githubusercontent.com/samsledje/ConPLex_dev/main/dataset/BIOSNAP/unseen_protein",
         "biosnap_mol": "https://raw.githubusercontent.com/samsledje/ConPLex_dev/main/dataset/BIOSNAP/unseen_drug",
         "dude": "http://cb.csail.mit.edu/cb/conplex/data",
+        "lit-pcba": "http://drugdesign.unistra.fr/LIT-PCBA/Files",
         "ConPLex_v1_BindingDB": "https://cb.csail.mit.edu/cb/conplex/data/models/BindingDB_ExperimentalValidModel.pt",
     }
     return REMOTE_DATA_PATHS[bm]
@@ -46,6 +47,7 @@ def add_args(parser: ArgumentParser):
             "biosnap_prot",
             "biosnap_mol",
             "dude",
+            "lit-pcba",
 #            "dti_dg",
         ],
         help="Benchmarks to download.",
@@ -90,6 +92,8 @@ def main(args):
         
         if bm == "dude":
             fi_list = ["full.tsv", "dude_cross_type_train_test_split.csv", "dude_within_type_train_test_split.csv"]
+        elif bm == "lit-pcba":
+            fi_list = ["AVE_unbiased.tgz"]
         else:
             fi_list = ["train.csv", "val.csv", "test.csv"]
         
