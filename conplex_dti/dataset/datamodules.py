@@ -41,6 +41,7 @@ def get_task_dir(task_name: str, database_root: Path):
         "davis": database_root / "DAVIS",
         "dti_dg": database_root / "TDC",
         "dude": database_root / "DUDe",
+        "lit-pcba": database_root / "LIT-PCBA",
         "halogenase": database_root / "EnzPred/halogenase_NaCl_binary",
         "bkace": database_root / "EnzPred/duf_binary",
         "gt": database_root / "EnzPred/gt_acceptors_achiral_binary",
